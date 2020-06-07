@@ -1,23 +1,22 @@
-- [首页](home.md)
+- [首页](home-core.md)
 
-- YuQ 工作群
-    - [简介](YuQ.md)
-    - [关于](about.md)
-    - 开发计划
+- YuQ 基础
+    - 消息相关
+        - [Message](base/message/message.md)
+        - [MessageItem](base/message/messageItem.md)
+        - [MessageFactory](base/message/messageFactory.md)
+        - [MessageItemFactory](base/message/messageItemFactory.md)
+    - 好友相关
+        - [好友](base/friend/friend.md)
+        - [群](base/friend/group.md)
+        - [群成员](base/friend/group.md) 
     
-- YuQ 核心
-    - 工作内容
-    - 模块开发
-    - 插件开发
-    - 运行时开发
+- Controller
     
-- 模块
-    - Web 模块
-    - QQ 机器人模块
-    - 微信机器人模块
-    
-- 插件
-    - JPA ORM 支持插件
+- Event
+
+- 定时任务
     
 - 运行时
-    - Java CoolQ 运行时（Jcq）
+    - YuQ CoolQ 运行时（Jcq）
+    - YuQ Mirai
