@@ -4,8 +4,43 @@ Message 对象，既为一个消息的具体的对象。
 接受消息，收到的是一个 Message 对象，发送消息同样也需要一个 Message 对象。
 
 ## Message 的组成
+```Java
+public class Message{
 
+    // 消息Id
+    private Integer id;
+
+    // 发言人 QQ 号码
+    private Long qq;
+    // 发言人所在群号码（当好友私聊时此项为空）
+    private Long group;
+    // 是否为临时会话
+    private boolean temp;
+    
+    // 消息源，用于回复与撤回
+    private MessageSource source;
+    
+    // 回复某条消息，为空时不回复
+    private MessageSource reply;
+    // 发送消息时 At 对方（仅群聊生效）
+    private boolean at = fasle;
+    
+    // Runtime 平台源消息对象，可能为任何类型。
+    private Object sourceMessage;
+    
+    // 消息内容
+    private List<MessageItem> body;
+    // 经过处理的，用于路由的路径消息内容
+    private List<MessageItem> path;
+    
+    /*
+        省略 Getter Setter
+    */
+
+}
+```
 ```Kotlin
+open class Message {
     var temp: Boolean // 是否为临时会话
     
     var id: Int? // 消息Id
@@ -14,12 +49,28 @@ Message 对象，既为一个消息的具体的对象。
 
     lateinit var source:MessageSource // 消息源，用于回复与撤回
     var reply: MessageSource? // 回复某条消息，为空时不回复
-    var at: Boolean = false // 发送消息时 At 对方
+    var at: Boolean = false // 发送消息时 At 对方（仅群聊生效）
 
     lateinit var sourceMessage: Any // Runtime 平台源消息对象，可能为任何类型。
     var body: List<MessageItem> // 消息内容
     lateinit var path:List<MessageItem> // 经过处理的，用于路由的路径消息内容
+}
 ```
+## Message 的结构
+与 CoolQ 等机器人不同的是，YuQ 的 Message 不再仅仅是一串文本。  
+Message 对象，包含了一条消息所应该有的完整内容，  
+如：
+  发送源/接受者
+  消息内容
+  和一些其他的用于更加便于使用的内容
+
+Message 的 body，也就是消息体，是一个消息的内容，也是一个消息中重要的组成部分。  
+他是由一个或多个 MessageItem。  
+MessageItem 既为消息内容的具体表现形式。  
+和 CoolQ 那种一个消息混杂了文本与酷 Q 码的形式不同。  
+YuQ 把所有组成元素都封装成了对象。  
+
+Message 的 body 也是所有消息内容的对象组成的数组。 
 
 ## Message 的使用
 

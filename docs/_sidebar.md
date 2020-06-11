@@ -12,7 +12,8 @@
         - [群成员](base/friend/group.md) 
     
 - Controller
-    
+    - [干啥的？](controller/info.md)
+    - [咋用啊？](controller/used.md)
 - Event
 
 - 定时任务
