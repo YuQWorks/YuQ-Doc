@@ -18,6 +18,19 @@ interface Text : MessageItem {
     val text: String // 消息内容
 }
 ```
+目标格式 | 能否转换 | 描述
+--- | --- | ---
+String | 是 | -
+Integer | 是 | 仅限纯数字
+Long | 是 | 仅限纯数字
+Float | 是 | 仅限可转换的小数
+Double | 是 | 仅限可转换的小数
+Boolean | 是 | 特定内容可为 true，其他均为 false
+Contact | 是 | 仅限纯数字
+Friend | 是 | 仅限纯数字
+Group | 是 | 仅限纯数字
+Member | 是 | 仅限纯数字
+User | 是 | 仅限纯数字
 ### At
 QQ 群中的 At，私聊中无法使用。  
 At 全体成员为 -1。
@@ -26,6 +39,19 @@ interface At : MessageItem {
     val user: Long // 被 At 的目标 QQ
 }
 ```
+目标格式 | 能否转换 | 描述
+--- | --- | ---
+String | 是 | At_目标 QQ 号码
+Integer | 否 | -
+Long | 是 | 目标 QQ 号码
+Float | 否 | -
+Double | 否 | -
+Boolean | 否 | -
+Contact | 是 | 被 At 的成员对象
+Friend | 否 | -
+Group | 否 | -
+Member | 是 | 被 At 的成员对象
+User | 是 | 被 At 的成员对象
 ### 表情
 基础的 QQ 表情，Emoji 是 Unicode 字符，不属于表情。
 ```
@@ -33,6 +59,19 @@ interface Face : MessageItem {
     val faceId: Int // 表情编号。
 }
 ```
+目标格式 | 能否转换 | 描述
+--- | --- | ---
+String | 是 | 表情_表情Id
+Integer | 是 | 表情Id
+Long | 是 | 表情Id
+Float | 否 | -
+Double | 否 | -
+Boolean | 否 | -
+Contact | 否 | -
+Friend | 否 | -
+Group | 否 | -
+Member | 否 | -
+User | 否 | -
 #### 表情编号对照表
 // TODO 待更新
 ### 图片
@@ -43,6 +82,9 @@ interface Image : MessageItem {
     val url: String // 图片下载地址
 }
 ```
+目标格式 | 能否转换 | 描述
+--- | --- | ---
+String | 是 | 图片
 ### 未被支持的消息内容
 该内容未暂时未被实现。
 ```

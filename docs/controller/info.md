@@ -35,12 +35,12 @@ YuQ 在这里引入了类似于 Web MVC 的那套理论。
 这里的启用应该就会被解析为一个参数。  
 那我们的代码就应该是：
 ```Java
-@Path_("群")
+@Path("群")
 @GroupController
 public class DemoController {
 
-    @Action("撤回监控")
-    public String recall(@PathVar(value = 2, type = PathVar.Type.Switch) boolean flag) {
+    @Action("撤回监控 {flag}")
+    public String recall(boolean flag) {
         if (flag) return "撤回监控启用！";
         return "撤回监控禁用！";
     }
@@ -48,12 +48,12 @@ public class DemoController {
 }
 ```
 ```Kotlin
-@Path_("群")
+@Path("群")
 @GroupController
 class TestPathGroupController {
     
-    @Action("撤回监控")
-    fun recall(@PathVar(2, PathVar.Type.Switch) switch: Boolean) = if (switch) "撤回监控启用！" else "撤回监控禁用！"
+    @Action("撤回监控 {flag}")
+    fun recall(flag: Boolean) = if (switch) "撤回监控启用！" else "撤回监控禁用！"
     
 }
 ```
@@ -64,11 +64,9 @@ class TestPathGroupController {
 想其他的 Web MVC 一样，YuQ 的 Controller 也支持零个到多个参数，只需要将你需要的参数写下来。  
 YuQ 就会将你需要的参数带到你的方法里面。
 
-`@PathVar` 注解声明了，这是一个来自"路径"中的参数。  
-`value` 代表了这个参数所在的位置。  
-就如同例子，"群"，"撤回监控"，"启用"，中的第 2 个，就是这个启用了。  
-而 `type` 声明这个参数的类型。  
-PathVar.Type.Switch 代表了这是一个开关类型，会将内容转化为一个 boolean 的值。
+这里，我们在 `Action` 注解中，用 `{flag}` 指定了一个参数 `flag`。  
+它的含义就是 "群 撤回监控 启用" 这段话中的启用，就会被映射到 flag 参数。  
+因为我们要求的参数类型是 `boolean`，所以 "启用" 这个内容，就会被 YuQ 智能的转化为一个 `boolean` 类型的值，并带入到您的 Action 中。
 
 然后 recall 返回的一个 String 对象，被 YuQ 接收，并且组成一个 Message，向消息源发送。
 

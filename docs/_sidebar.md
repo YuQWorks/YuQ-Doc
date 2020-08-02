@@ -14,10 +14,13 @@
 - Controller
     - [干啥的？](controller/info.md)
     - [咋用啊？](controller/used.md)
+    - [还有呢？](controller/more.md)
 - Event
-
+    - [事件监听](event/listener.md)
+    - [内置事件列表](event/events.md)
+    - [自定义事件](event/new.md)
 - 定时任务
-    
+    - [定时任务与时钟任务](job/static.md)
+    - [动态创建任务](job/new.md)
 - 运行时
-    - YuQ CoolQ 运行时（Jcq）
-    - YuQ Mirai
+    - [YuQ-Mirai](runtime/YuQ-Mirai.md)
