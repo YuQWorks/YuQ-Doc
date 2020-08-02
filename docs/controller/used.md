@@ -15,13 +15,13 @@ YuQ 将私聊信息与群聊信息分为两个不同体系。
 我们需要为 Controller 准备一个类。
 然后根据我们要处理的是群聊，或是私聊标记上相应的注解。
 
-```Java
+```java
 @GroupController
 public class DemoController {
 
 }
 ```
-```Kotlin
+```kotlin
 @GroupController
 class DemoController {
 
@@ -44,7 +44,7 @@ Befores -> Action -> Afters
 
 ## Action
 
-```Java
+```java
     @Action("菜单")
     public String menu(){
         return "这是一个基础菜单，\n" +
@@ -53,7 +53,7 @@ Befores -> Action -> Afters
                 "所以，就这样吧。";
     }
 ```
-```Kotlin
+```kotlin
     @Action("菜单")
     fun menu()= """
         |这是一个基础菜单，
@@ -94,7 +94,7 @@ YuQ 能办到的还不只这些。
 
 前置拦截器在 Action 之前响应。
 
-```Java
+```java
     @Before
     public void before(Member qq) {
         if (!qq.isAdmin()) throw MessageUtil.stringToMessage("你没有使用该命令的权限！");
@@ -115,7 +115,7 @@ Before 接受任意返回值。
 
 后置拦截器在 Action 之前响应。
 
-```Java
+```java
     @After
     public void after(Message reMessage) {
         if (reMessage != null) reMessage.at = true;

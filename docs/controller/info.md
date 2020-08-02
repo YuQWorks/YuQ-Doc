@@ -34,7 +34,7 @@ YuQ 在这里引入了类似于 Web MVC 的那套理论。
 熟悉 RESTful 的同学，可能会熟悉，URL，中，某个内容是可以当做参数的。  
 这里的启用应该就会被解析为一个参数。  
 那我们的代码就应该是：
-```Java
+```java
 @Path("群")
 @GroupController
 public class DemoController {
@@ -47,7 +47,7 @@ public class DemoController {
 
 }
 ```
-```Kotlin
+```kotlin
 @Path("群")
 @GroupController
 class TestPathGroupController {
@@ -58,7 +58,7 @@ class TestPathGroupController {
 }
 ```
 `@GroupController` 注解，声明了这是一个 Controller，并且是用来处理群消息的。  
-`@Path_` 注解，声明了这个 Controller 的一级路由为"群"。  
+`@Path` 注解，声明了这个 Controller 的一级路由为"群"。  
 
 到 recall 方法，`@Action` 注解声明了这是一个具体处理某个消息的处理器。  
 想其他的 Web MVC 一样，YuQ 的 Controller 也支持零个到多个参数，只需要将你需要的参数写下来。  

@@ -30,6 +30,11 @@ GroupUnBanMemberEvent | GroupMemberEvent  | 否| operator: 操作者| 群成员�
 GroupBanBotEvent | GroupMemberEvent | 否 | operator: 操作者, time: 禁言时长 | 机器人在某群被禁言事件
 GroupUnBanBotEvent | GroupMemberEvent | 否 | operator: 操作者| 机器人在某群被取消禁言事件
 - | - | -
+NewRequestEvent | Event | 是 | message: 请求消息 | 新的请求事件。
+NewFriendRequestEvent | NewRequestEvent | qq: 申请人的 QQ 号码 | 新的好友请求事件。
+GroupInviteEvent | NewRequestEvent | group: 群号码, qq: 邀请人的 QQ 号码 | 新的邀请入群事件。
+GroupMemberRequestEvent | NewRequestEvent | group: 被申请的群, qq: 申请人的 QQ 号码 | 申请入群事件。
+- | - | -
 ContextSessionCreateEvent | Event | 否 | session: Session | ContextSession 创建事件。
 - | - | -
 ActionContextInvokeEvent | Event | 是 | context: 上下文 | Controller 处理链路事件
@@ -43,5 +48,7 @@ ActionContextInvokeEvent.Post | ActionContextInvokeEvent | 是 | - | Controller 
 MessageEvent | MessageEvent 及其子事件，取消事件会导致 Controller 部分一并取消响应。
 GroupBanBotEvent | 与 GroupBanMemberEvent 事件相互独立，触发本事件不会触发 GroupBanMemberEvent 事件。
 GroupUnBanBotEvent | 与 GroupUnBanMemberEvent 事件相互独立，触发本事件不会触发 GroupUnBanMemberEvent 事件。
+NewRequestEvent | 当事件被取消时，则代表处理本请求。事件的 accept 属性若为 true 则为接受，false 则为拒绝，null 则为忽略。
+GroupMemberRequestEvent | 当拒绝入群时，若事件的 blackList 为 true，则禁止此人继续加群。
 ActionContextInvokeEvent.Per | 事件发生于路由寻路之前，也就是说，没有任何路由绑定依旧会触发此事件。取消会中断处理链路。
 ActionContextInvokeEvent.Post | 事件发生于路由寻路之后，也就是说，没有任何路由绑定依旧会触发此事件。取消会中断可能存在的返回消息的发送。

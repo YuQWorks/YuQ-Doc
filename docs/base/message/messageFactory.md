@@ -1,5 +1,7 @@
 # MessageFactory 。
 
+**当前文档已经过时，可直接 new Message 对象。**
+
 ## 如何获得一个 MessageFactory 的实例呢？
 
 鉴于 YuQ 需要同时兼容不同的机器人平台，不同的机器人平台又会有所不同。  

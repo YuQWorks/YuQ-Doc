@@ -4,7 +4,7 @@
     - 消息相关
         - [Message](base/message/message.md)
         - [MessageItem](base/message/messageItem.md)
-        - [MessageFactory](base/message/messageFactory.md)
+        - [~~MessageFactory（已经过时）~~](base/message/messageFactory.md)
         - [MessageItemFactory](base/message/messageItemFactory.md)
     - 好友相关
         - [好友](base/friend/friend.md)
