@@ -31,9 +31,9 @@ GroupBanBotEvent | GroupMemberEvent | 否 | operator: 操作者, time: 禁言时
 GroupUnBanBotEvent | GroupMemberEvent | 否 | operator: 操作者| 机器人在某群被取消禁言事件
 - | - | -
 NewRequestEvent | Event | 是 | message: 请求消息 | 新的请求事件。
-NewFriendRequestEvent | NewRequestEvent | qq: 申请人的 QQ 号码 | 新的好友请求事件。
-GroupInviteEvent | NewRequestEvent | group: 群号码, qq: 邀请人的 QQ 号码 | 新的邀请入群事件。
-GroupMemberRequestEvent | NewRequestEvent | group: 被申请的群, qq: 申请人的 QQ 号码 | 申请入群事件。
+NewFriendRequestEvent | NewRequestEvent | 是 | qq: 申请人的 QQ 号码 | 新的好友请求事件。
+GroupInviteEvent | NewRequestEvent | 是 | group: 群号码, qq: 邀请人的 QQ 号码 | 新的邀请入群事件。
+GroupMemberRequestEvent | NewRequestEvent | 是 | group: 被申请的群, qq: 申请人的 QQ 号码 | 申请入群事件。
 - | - | -
 ContextSessionCreateEvent | Event | 否 | session: Session | ContextSession 创建事件。
 - | - | -
