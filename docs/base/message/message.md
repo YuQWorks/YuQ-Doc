@@ -72,7 +72,7 @@ plus 方法同时重写了 Kotlin 中的操作符 "+"，Kotlin 开发者可以�
 
 ### 发送消息
 
-在 YuQ 中，所有可以发送消息的对象都被称之为联系人（Contact）。  
+在 YuQ 中，所有可以发送消息的对象都被称之为联系人（[Contact](base/friend/contact.md)）。  
 Contact 提供了一个 `sendMessage(Message)` 方法，用于发送消息。
 
 ### 撤回消息
