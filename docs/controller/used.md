@@ -103,13 +103,41 @@ YuQ 能办到的还不只这些。
 我们可以通过 `Before` 注解声明一个前置拦截器。  
 通过设定注解的 except 和 only 参数，可以指定拦截器排除某些 Action 或只对某些 Action 生效。  
 如 `@Before(except = "init")` 则代表了这个拦截器排除了方法名为 init 的 Action。  
-可以通过指定 value 参数来指定拦截器的优先级，值越小优先级越高。（该功能暂未实现。）  
+可以通过指定 value 参数来指定拦截器的优先级，值越小优先级越高。
 
 Before 接受 0 或多个参数，参数内容详见参数注入。  
 Before 接受任意返回值。  
 如果 Before 有返回值，那么则将该返回值以其实际类的类名（simpleName），并将首字母转为小写为键保存起来，以供后续注入。  
 例如，返回值类型为 com.IceCreamQAQ.simple.Entity 则键为 entity。  
 在后续处理中可以通过声明一个 entity 为名的参数取得本返回值。  
+所谓的后续处理，是指位于Before之后的Action，当他走入对应的Action时候，Message可能已经被你在Before中进行了一定的处理。  
+如果你要问什么处理，比如参数的修改，我将Member的QQid更换为另外一个QQid，在Action中处理的id就是修改后的。又或者本来没有Session，我在Before中建了一个Session，那么Action就可以进行使用。拿代码来简单举例一下
+算了，代码解释，不太会写文档。
+```kotlin
+    //weight 表示权重
+    @Before(weight = 0)
+    //表示全局，他不论位于哪个class中，都会位于其他Action之前。
+    @Globl
+    fun before(qq: Long, message: Message, actionContext: BotActionContext){
+        
+        val TestEntity = Service.findByQQ(qq)
+        //Before之后会进入Action。如果想要中断，使用throw抛出异常，如果异常类型是Message，则机器人会返会此条Message
+        if (TestEntity == null || TestEntity.cookie == "") throw mif.at(qq).plus("您还没有绑定哔哩哔哩账号，无法继续！！！，如需绑定请发送[bilibililoginbyqq]或[bilibililoginbyweibo]或[]bilibililoginbyqr").toThrowable()
+        actionContext["biliBiliEntity"] = TestEntity
+    }
+    @Action("Testmy")
+    //自动At  At之后自动换行
+    @QMsg(at = true, atNewLine = true)
+    //注意参数TestEntity 这个Entity是由Before的actionContext注入进来的。
+    fun searchMyFriendDynamic(testEntity: TestEntity, @PathVar(value = 1, type = PathVar.Type.Integer) num :Int?, qq: Long): Message{
+        //假定此行获取TestEntity的好友动态  那么可以直接使用testEntity          
+        val commonResult = testLogic.getFriendDynamic(testEntity)
+        val list = commonResult.t ?: return mif.at(qq).plus(commonResult.msg)
+        if (list.isEmpty()) return mif.at(qq).plus("您的好友没有任何动态呢！！")
+        val newNum = this.parseNum(list, num)
+        return testLogic.convertStr(list[newNum - 1]).toMessage()
+    }
+```
 
 ## 后置拦截器 After
 
@@ -124,13 +152,14 @@ Before 接受任意返回值。
 我们可以通过 `After` 注解声明一个后置拦截器。  
 与前置拦截器相同，通过设定注解的 except 和 only 参数，可以指定拦截器排除某些 Action 或只对某些 Action 生效。  
 如 `@After(except = "init")` 则代表了这个拦截器排除了方法名为 init 的 Action。  
-可以通过指定 value 参数来指定拦截器的优先级，值越小优先级越高。（该功能暂未实现。）  
+可以通过指定 value 参数来指定拦截器的优先级，值越小优先级越高。 
 
 After 接受 0 或多个参数，参数内容详见参数注入。  
 After 接受任意返回值。  
 与 Before相同，如果 After 有返回值，那么则将该返回值以其实际类的类名（simpleName），并将首字母转为小写为键保存起来，以供后续注入。  
 例如，返回值类型为 com.IceCreamQAQ.simple.Entity 则键为 entity。  
 在后续处理中可以通过声明一个 entity 为名的参数取得本返回值。  
+但是After基本上是最后一个处理环节了，，所以.....
 
 ## 参数注入
 
