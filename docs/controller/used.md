@@ -117,7 +117,7 @@ Before 接受任意返回值。
     //weight 表示权重
     @Before(weight = 0)
     //表示全局，他不论位于哪个class中，都会位于其他Action之前。
-    @Globl
+    @global
     fun before(qq: Long, message: Message, actionContext: BotActionContext){
         
         val TestEntity = Service.findByQQ(qq)
@@ -161,6 +161,15 @@ After 接受任意返回值。
 在后续处理中可以通过声明一个 entity 为名的参数取得本返回值。  
 但是After基本上是最后一个处理环节了，，所以.....
 
+## 异常拦截器 Catch
+Catch在Action触发异常的时候相应。  
+Catch需要指定异常比如`NullPointException`或者使用`Exception`来捕获所有的异常。  
+Catch与Before与After在使用上，作用范围上都基本一致，同样具有优先级，参数注入，可以使用`@Global`来使其变为全局异常捕获器（依然只限于Controller部分）  
+除此之外，还可以使用方法参数获取Exception，也就是说相当于在Try Catch 中的Catch执行方法，不需要每个方法都写一下Try Catch了。
+Catch同样具有优先级设定，对于一个异常，也会按照优先级逐步前进。虽然我感觉未必有用，但是说不定你恰好需要呢？  
+至于代码，因为和Before和After非常相似，所以我就不写了。如果确实需要示例，后期会再补上。
+
+
 ## 参数注入
 
 有时候，我们不仅仅需要对于消息做出基本的响应。  
@@ -182,9 +191,6 @@ message | 收到的消息对象 | Message
 reMessage | 回复的消息对象 | Message | 仅在 After 阶段才可能有本对象。
 
 上面的一些参数，如果有需要，直接在 Before，Action，After 的具体方法中填写某个参数，以及你需要的类型，即可自动将参数注入到方法。  
-
-## 异常拦截器 Catch
-暂未实现
 
 
 
