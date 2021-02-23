@@ -37,7 +37,7 @@ public class WeatherController {
 在这里开始，对于Java基础的有了简单要求，如果有使用过任何MVC框架，比如Spring，那么这里以及之后的部分将会更容易理解
 :::
 
-```java{}
+```java
     /**
      * 此处使用@Action将函数变成指令的响应器
      * 指令格式应该是 ”weather 南京“
@@ -62,7 +62,7 @@ public class WeatherController {
 
 在编写完成一个命令以后，我们可能还想要对命令进行更多的处理，比如我只想要群号为`12345`的群中的`122222`才可以触发这个命令。那么我们可以为他添加一个`@Before`。
 
-```java{}
+```java
     /**
      * @param group 信息发送者所在群 YuQ会自动注入
      * @param qq 信息发送者的ID YuQ会自动注入
@@ -85,7 +85,7 @@ public class WeatherController {
 
 又或者，我们不对信息的来源进行限制，但是我们想让命令返回的时候增添一个自动@的效果，这样每个人都能看到自己所发出的指令的回馈。我们可以使用`@After`。
 
-```java{}
+```java
     /**
      * After与 Before极其类似，除了出现的时间点不同，使用和逻辑上基本一致
      * @param reMessage 这是由Action处理完发送的信息，目前还没有交给服务器
@@ -110,7 +110,7 @@ public class WeatherController {
 
 这是在路由中的最后一个注解，主要功能是用于捕获异常，可以帮助我们省去大量重复的try/catch代码。
 
-```java{}
+```java
     /**
      * 直接使用注入来获取YuQ对象，对象内存储着Bot的各种信息，包括群列表，好友列表等。
      */

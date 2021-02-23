@@ -1,5 +1,6 @@
 module.exports = {
-    title: 'YuQ',
+    base:"/YuQ-Doc/",
+    title: 'YuQ-Doc',
     description: '一个Java/Kotlin开发的机器人框架',
     markdown: {
         lineNumbers: true
@@ -56,19 +57,6 @@ module.exports = {
                     collapsable: false,
                     children: [
                         '',
-                        'command-session',
-                        'command-argument',
-                        'command-group',
-                        'message',
-                        'permission',
-                        'decorator',
-                        'database',
-                        'server-app',
-                        'scheduler',
-                        'logging',
-                        'configuration',
-                        'larger-application',
-                        'deployment',
                     ]
                 }
             ],
