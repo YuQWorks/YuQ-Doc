@@ -1,3 +1,4 @@
+```java
 package wiki.IceCream.yuq.demo.event;
 
 import com.IceCreamQAQ.Yu.annotation.Event;
@@ -35,7 +36,7 @@ public class GroupManager {
     public void welcome(GroupMemberJoinEvent event){
         event.getGroup().sendMessage(Message.Companion.toMessage("欢迎新朋友~"));
     }
-
-
-
+    
 }
+
+```
