@@ -57,6 +57,11 @@ module.exports = {
                     collapsable: false,
                     children: [
                         '',
+                        'contact',
+                        'msg',
+                        'controller',
+                        'event',
+                        'db'
                     ]
                 }
             ],
