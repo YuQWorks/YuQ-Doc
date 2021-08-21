@@ -10,5 +10,5 @@ features:
   details: 精心设计的消息处理流程使得你可以很方便地将原型扩充为具有大量实用功能的完整聊天机器人，并持续保证扩展性。
 - title: 高性能
   details: 原生的Java/Kotlin开发，原生API，与其他 Socket，WebSocket，HTTP API，相比，节省掉了大量的Net IO，助你面向更高更快更强而冲锋！
-  footer: Apache2.0 Licensed | Copyright © 2021 YuQ Team
+footer: Apache2.0 Licensed | Copyright © 2021 YuQ Team
 ---

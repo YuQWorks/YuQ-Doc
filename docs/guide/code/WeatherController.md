@@ -1,3 +1,4 @@
+```java
 package wiki.IceCream.yuq.demo.controller;
 
 import com.IceCreamQAQ.Yu.annotation.*;
@@ -86,3 +87,5 @@ public class WeatherController {
 
 
 }
+
+```
