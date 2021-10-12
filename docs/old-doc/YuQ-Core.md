@@ -1,4 +1,4 @@
-# YuQ-Core
+# Yu-Core
 
 > YuQ 框架核心依赖。
 

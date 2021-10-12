@@ -60,8 +60,11 @@ module.exports = {
                         'contact',
                         'msg',
                         'controller',
+                        'ControllerPlus',
                         'event',
-                        'db'
+                        'db',
+                        'WebServer',
+                        'YuHook'
                     ]
                 }
             ],
