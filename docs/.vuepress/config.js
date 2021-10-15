@@ -64,7 +64,8 @@ module.exports = {
                         'event',
                         'db',
                         'WebServer',
-                        'YuHook'
+                        'YuHook',
+                        'Process'
                     ]
                 }
             ],
