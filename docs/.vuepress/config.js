@@ -29,6 +29,7 @@ module.exports = {
             { text: '主页', link: '/' },
             { text: '指南', link: '/guide/' },
             { text: '进阶', link: '/advanced/' },
+            { text: '内置事件列表', link: '/events/' },
             { text: '旧版日志', link: '/old-doc/' },
             { text: 'API', link: '/api.md' },
             { text: '术语表', link: '/glossary.md' },
@@ -66,6 +67,19 @@ module.exports = {
                         'WebServer',
                         'YuHook',
                         'Process'
+                    ]
+                }
+            ],
+            '/events/': [
+                {
+                    title: '内置事件列表',
+                    collapsable: false,
+                    children: [
+                        '',
+                        'lifecycle',
+                        'contact',
+                        'message',
+                        'specialAction',
                     ]
                 }
             ],
